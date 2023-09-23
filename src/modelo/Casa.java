@@ -5,6 +5,7 @@ public class Casa extends Financiamento {
 	private double areaConstruida;
 	private double tamanhoTerreno;
 	
+	
 	public Casa (int tipoImovel, double valorImovel, int prazoFinanciamento, double taxaJurosAnual, double areaConstruida, double tamanhoTerreno) {
 		super (tipoImovel,valorImovel, prazoFinanciamento, taxaJurosAnual);
 		this.areaConstruida = areaConstruida;
@@ -34,7 +35,14 @@ public class Casa extends Financiamento {
 	public double getTamanhoTerreno() {
 		return tamanhoTerreno;
 	}
-}
 
 
+public void verificarDesconto (double diferenca) throws DescontoMaiorDoQueJurosException{
+	double valorDesconto = super.calcularPgtoMensal() - this.calcularPgtoMensal();
+	double valorJurosMensalidade = super.calcularPgtoMensal()-(super.getValorImovel()/super.getPrazoFinanciamento()/12);
+	diferenca = valorDesconto - valorJurosMensalidade;
+	if (diferenca > 0)
+		throw new DescontoMaiorDoQueJurosException ("O valor de desconto é maior que os juros da parcela");
+		}
+	}
 

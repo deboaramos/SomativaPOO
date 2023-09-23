@@ -1,6 +1,7 @@
 package main;
 import modelo.Apartamento;
 import modelo.Casa;
+import modelo.DescontoMaiorDoQueJurosException;
 import modelo.Financiamento;
 import modelo.Terreno;
 import util.InterfaceUser;
@@ -21,6 +22,13 @@ public class Main {
     		double tamanhoTerreno = interfaceUser.solicitarTamanhoTerreno();
     		Casa casa = new Casa(tipoImovel, valorImovel, prazoFinanciamento, taxaJurosAnual, areaConstruida, tamanhoTerreno);
     		listaFinanciamentos.add(casa);
+    		try {
+    			double diferenca = 0;
+				casa.verificarDesconto(diferenca );
+				}
+    		catch (DescontoMaiorDoQueJurosException e) {
+    			System.out.println("Erro:" + e.getMessage());
+    		}
     	}
     	if (tipoImovel == 2) {
     		int vagasGaragem = interfaceUser.solicitarVagasGaragem();
@@ -36,6 +44,7 @@ public class Main {
     double total_parcelas = 0.00;
     double total_financiamentos = 0.00;
     double total_imoveis = 0.00;
+    
 
     // Imprimindo os valores do financiamento
     
@@ -91,12 +100,13 @@ public class Main {
     total_parcelas += u.calcularPgtoMensal();
     total_financiamentos += u.calcularTotalFinanciamento();
     total_imoveis += u.somarValorImoveis();
-}
+   }
     // Imprimindo os valores na tela
     System.out.printf(" ---------------------------- %nValor total dos imóveis: %.2f%n", total_imoveis);
     System.out.printf("Total Parcelas: %.2f%n", total_parcelas);
     System.out.printf("Valor total dos Financiamentos: %.2f%n", total_financiamentos);
-    
+       
+        
     interfaceUser.closeScanner();
     }
 

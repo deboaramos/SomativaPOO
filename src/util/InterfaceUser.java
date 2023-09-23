@@ -11,10 +11,10 @@ public class InterfaceUser {
     private Scanner scanner;
 
     public InterfaceUser() {
-        this.scanner = new Scanner(System.in);
+    	this.scanner = new Scanner(System.in);
     }
-    
-    
+        
+   
     public int solicitarTipoImovel() {
     	while (true) {
     		System.out.printf("Informe o tipo de Imovel que será financiado: %n" + "1 - Casa%n" + "2 - Apartamento%n" + "3 - Terreno%n" + "Tipo Imóvel:");
@@ -82,7 +82,7 @@ public class InterfaceUser {
                     }
                 }
                                            
-            System.out.println("Digite o valor total de area construida");
+            System.out.println("Utilize apenas numeros positivos");
                 scanner.nextLine();
             }
          }
@@ -97,7 +97,7 @@ public class InterfaceUser {
                      }
                  }
                                             
-             System.out.println("Digite a área total do terreno (m2)");
+             System.out.println("Informe apenas números positivos.");
                  scanner.nextLine();
              }
           }
@@ -112,7 +112,7 @@ public class InterfaceUser {
                      }
                  }
                                             
-             System.out.println("Digite a quantidade de vagas de garagem:");
+             System.out.println("Favor inserir apenas números positivos");
                  scanner.nextLine();
              }
          }
