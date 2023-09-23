@@ -71,7 +71,81 @@ public class InterfaceUser {
             scanner.nextLine();
         }
     }
-        
+   
+         public double solicitarAreaConstruida() {
+            while (true) {
+                System.out.print("Informe o total da area construída do imovel (m2): ");
+                if (scanner.hasNextDouble()) {
+                    double areaConstruida = scanner.nextDouble();
+                    if (areaConstruida > 0) {
+                        return areaConstruida;
+                    }
+                }
+                                           
+            System.out.println("Digite o valor total de area construida");
+                scanner.nextLine();
+            }
+         }
+
+         public double solicitarTamanhoTerreno() {
+             while (true) {
+                 System.out.print("Informe a área total do terreno (m2): ");
+                 if (scanner.hasNextDouble()) {
+                     double tamanhoTerreno = scanner.nextDouble();
+                     if (tamanhoTerreno > 0) {
+                         return tamanhoTerreno;
+                     }
+                 }
+                                            
+             System.out.println("Digite a área total do terreno (m2)");
+                 scanner.nextLine();
+             }
+          }
+         
+         public int solicitarVagasGaragem() {
+             while (true) {
+                 System.out.print("Informe a quantidade de vagas de garagem: ");
+                 if (scanner.hasNextInt()) {
+                     int vagasGaragem = scanner.nextInt();
+                     if (vagasGaragem >= 0) {
+                         return vagasGaragem;
+                     }
+                 }
+                                            
+             System.out.println("Digite a quantidade de vagas de garagem:");
+                 scanner.nextLine();
+             }
+         }
+       
+         public int solicitarAndar() {
+             while (true) {
+                 System.out.print("Informe o andar do apartamento: ");
+                 if (scanner.hasNextInt()) {
+                     int andar = scanner.nextInt();
+                     if (andar >= 0) {
+                         return andar;
+                     }
+                 }
+                                            
+             System.out.println("Digite o andar do apartamento. Se Térreo, digite: 0.");
+                 scanner.nextLine();
+             }
+         }
+         
+         public int solicitarZona() {
+             while (true) {
+                 System.out.printf("Informe a zona onde o imovel está localizado: %n" + "1 - Residencial%n" + "2 - Comercial%n" + "3 - Industrial%n" + "Digite o tipo de zona do imovel: ");
+                 if (scanner.hasNextInt()) {
+                     int zona = scanner.nextInt();
+                     if (zona >= 1 && zona <= 3) {
+                         return zona;
+                     }
+                 }
+                                            
+             System.out.println("Informe umas das opções de zona.");
+                 scanner.nextLine();
+             }
+         }
         public void closeScanner() {
             scanner.close();
         }

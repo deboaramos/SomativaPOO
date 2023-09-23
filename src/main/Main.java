@@ -16,6 +16,23 @@ public class Main {
     double valorImovel = interfaceUser.solicitarValorImovel();
     int prazoFinanciamento = interfaceUser.solicitarPrazoFinanciamento();
     double taxaJurosAnual = interfaceUser.solicitarTaxaJuros();
+    	if (tipoImovel == 1) {
+    		double areaConstruida = interfaceUser.solicitarAreaConstruida();
+    		double tamanhoTerreno = interfaceUser.solicitarTamanhoTerreno();
+    		Casa casa = new Casa(tipoImovel, valorImovel, prazoFinanciamento, taxaJurosAnual, areaConstruida, tamanhoTerreno);
+    		listaFinanciamentos.add(casa);
+    	}
+    	if (tipoImovel == 2) {
+    		int vagasGaragem = interfaceUser.solicitarVagasGaragem();
+    		int andar = interfaceUser.solicitarAndar();
+    		Apartamento apto = new Apartamento (tipoImovel, valorImovel, prazoFinanciamento, taxaJurosAnual, vagasGaragem, andar);
+    		listaFinanciamentos.add(apto);
+       	}
+    	if (tipoImovel == 3) {
+    		int zona = interfaceUser.solicitarZona();
+    		Terreno terreno = new Terreno (tipoImovel, valorImovel, prazoFinanciamento, taxaJurosAnual, zona);
+    		listaFinanciamentos.add(terreno);
+    	}
     double total_parcelas = 0.00;
     double total_financiamentos = 0.00;
     double total_imoveis = 0.00;
@@ -23,7 +40,6 @@ public class Main {
     // Imprimindo os valores do financiamento
     
      
-    
     String nomeTipoImovel = "";
     switch (tipoImovel) {
     case 1: 
@@ -49,13 +65,19 @@ public class Main {
                 
     
     //Adicionando financiamentos
-    Financiamento novo = new Financiamento(tipoImovel,valorImovel, prazoFinanciamento, taxaJurosAnual);
-    listaFinanciamentos.add(novo);
-    listaFinanciamentos.add (new Casa (1,150000,30,5));
-    listaFinanciamentos.add (new Casa (1,200000,15,2));
-    listaFinanciamentos.add (new Apartamento (2,150000,30,5));
-    listaFinanciamentos.add (new Apartamento (2,200000,15,5));
-    listaFinanciamentos.add (new Terreno (3,200000,15,2));
+     
+    Casa casa1 = new Casa (1,150000,30,5,90,236);
+    Casa casa2 = new Casa (1,200000,15,2, 200, 480);
+    Apartamento apto1 = new Apartamento (2,150000,30,5,2,25);
+    Apartamento apto2 = new Apartamento (2,200000,15,5,1,3);
+    Terreno terreno1 = new Terreno (3,200000,15,2,1);
+    
+         
+    listaFinanciamentos.add (casa1);
+    listaFinanciamentos.add (casa2);
+    listaFinanciamentos.add (apto1);
+    listaFinanciamentos.add (apto2);
+    listaFinanciamentos.add (terreno1);
    
 
     //Looping para calcular valores e imprimir na tela
@@ -74,7 +96,7 @@ public class Main {
     System.out.printf(" ---------------------------- %nValor total dos imóveis: %.2f%n", total_imoveis);
     System.out.printf("Total Parcelas: %.2f%n", total_parcelas);
     System.out.printf("Valor total dos Financiamentos: %.2f%n", total_financiamentos);
-
+    
     interfaceUser.closeScanner();
     }
 

@@ -1,7 +1,7 @@
 package modelo;
 import java.math.BigDecimal;
 
-public class Financiamento {
+public abstract class Financiamento {
 	
 	private int tipoImovel;
 	private double valorImovel;
