@@ -1,2 +1,0 @@
-# SomativaPOO
-Projeto Financeira
