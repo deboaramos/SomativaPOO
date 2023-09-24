@@ -11,6 +11,7 @@ public Terreno (int tipoImovel, double valorImovel, int prazoFinanciamento, doub
 	
 }
 
+
 @Override
 	public double calcularTotalFinanciamento() {
 	if (getTipoImovel() == 3) {

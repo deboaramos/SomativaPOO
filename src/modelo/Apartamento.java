@@ -14,7 +14,6 @@ public Apartamento (int tipoImovel, double valorImovel, int prazoFinanciamento, 
 }
 
 @Override
-
 public double calcularPgtoMensal() {
  double pgtoMensalApto = super.calcularPgtoMensal();
            if (getTipoImovel() == 2) {

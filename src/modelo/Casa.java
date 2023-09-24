@@ -1,5 +1,11 @@
 package modelo;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import main.ManipulacaoArquivos;
+
 public class Casa extends Financiamento {
 	
 	private double areaConstruida;
@@ -12,7 +18,7 @@ public class Casa extends Financiamento {
 		this.tamanhoTerreno = tamanhoTerreno;
 		
 	}
-		
+			
 	@Override
 	public double calcularPgtoMensal() {
 	    double pgtoMensalCasa = super.calcularPgtoMensal(); 
@@ -44,5 +50,6 @@ public void verificarDesconto (double diferenca) throws DescontoMaiorDoQueJurosE
 	if (diferenca > 0)
 		throw new DescontoMaiorDoQueJurosException ("O valor de desconto é maior que os juros da parcela");
 		}
-	}
+}
+
 

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Financiamento> listaFinanciamentos = new ArrayList<>();
-
+        ArrayList<Financiamento> listaFinanciamentos = new ArrayList<Financiamento>();
+        
 // Chamando métodos - instanciando
     InterfaceUser interfaceUser = new InterfaceUser();
     int tipoImovel = interfaceUser.solicitarTipoImovel();
@@ -24,7 +24,7 @@ public class Main {
     		listaFinanciamentos.add(casa);
     		try {
     			double diferenca = 0;
-				casa.verificarDesconto(diferenca );
+				casa.verificarDesconto(diferenca);
 				}
     		catch (DescontoMaiorDoQueJurosException e) {
     			System.out.println("Erro:" + e.getMessage());
@@ -40,6 +40,7 @@ public class Main {
     		int zona = interfaceUser.solicitarZona();
     		Terreno terreno = new Terreno (tipoImovel, valorImovel, prazoFinanciamento, taxaJurosAnual, zona);
     		listaFinanciamentos.add(terreno);
+    		    		
     	}
     double total_parcelas = 0.00;
     double total_financiamentos = 0.00;
@@ -75,37 +76,53 @@ public class Main {
     
     //Adicionando financiamentos
      
-    Casa casa1 = new Casa (1,150000,30,5,90,236);
-    Casa casa2 = new Casa (1,200000,15,2, 200, 480);
-    Apartamento apto1 = new Apartamento (2,150000,30,5,2,25);
-    Apartamento apto2 = new Apartamento (2,200000,15,5,1,3);
-    Terreno terreno1 = new Terreno (3,200000,15,2,1);
+ //   Casa casa1 = new Casa (1,150000,30,5,90,236);
+ //   Casa casa2 = new Casa (1,200000,15,2, 200, 480);
+ //  Apartamento apto1 = new Apartamento (2,150000,30,5,2,25);
+ //  Apartamento apto2 = new Apartamento (2,200000,15,5,1,3);
+ //   Terreno terreno1 = new Terreno (3,200000,15,2,1);
     
          
-    listaFinanciamentos.add (casa1);
-    listaFinanciamentos.add (casa2);
-    listaFinanciamentos.add (apto1);
-    listaFinanciamentos.add (apto2);
-    listaFinanciamentos.add (terreno1);
+ // listaFinanciamentos.add (casa1);
+ // listaFinanciamentos.add (casa2);
+ // listaFinanciamentos.add (apto1);
+ // listaFinanciamentos.add (apto2);
+ // listaFinanciamentos.add (terreno1);
    
-
+     
+         
     //Looping para calcular valores e imprimir na tela
         int i = 1;
     System.out.printf("%nLista de Financiamentos:%n");
     for (Financiamento u : listaFinanciamentos) {
-    System.out.println("- Financiamento " + i);
-    i += 1;
-    System.out.println((u));
-    u.mostrarInformacoes();
-    total_parcelas += u.calcularPgtoMensal();
-    total_financiamentos += u.calcularTotalFinanciamento();
-    total_imoveis += u.somarValorImoveis();
+	    System.out.println("- Financiamento " + i);
+	    i += 1;
+	    System.out.println((u));
+	    u.mostrarInformacoes();
+	    total_parcelas += u.calcularPgtoMensal();
+	    total_financiamentos += u.calcularTotalFinanciamento();
+	    total_imoveis += u.somarValorImoveis();
    }
     // Imprimindo os valores na tela
     System.out.printf(" ---------------------------- %nValor total dos imóveis: %.2f%n", total_imoveis);
     System.out.printf("Total Parcelas: %.2f%n", total_parcelas);
     System.out.printf("Valor total dos Financiamentos: %.2f%n", total_financiamentos);
        
+    
+    //Salvando os financiamentos no txt
+    ManipulacaoArquivos.salvarArquivo(listaFinanciamentos,"financiamentos.txt");
+  
+	//Recuperando dados do arquivo
+	ArrayList <Financiamento> financiamentosLidos = ManipulacaoArquivos.recuperarArquivo("financiamentos.txt");
+	
+	   
+	//Salvando financiamentos em arquivo serializado	
+	ManipulacaoArquivos.salvarArquivoSerializado (listaFinanciamentos,"financiamentos.bin");
+    
+    
+	//Recuperando dados arquivo serializado
+    ArrayList <Financiamento> financiamentosLidosSerializados = ManipulacaoArquivos.recuperarArquivoSerializado("financiamentos.bin");
+
         
     interfaceUser.closeScanner();
     }

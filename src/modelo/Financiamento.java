@@ -1,8 +1,10 @@
 package modelo;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
-public abstract class Financiamento {
-	
+public abstract class Financiamento implements Serializable {
+		
 	private int tipoImovel;
 	private double valorImovel;
     private int prazoFinanciamento;
@@ -20,8 +22,7 @@ public abstract class Financiamento {
     }
 
     //Método para adicionar financimento a financiamentos
-    @Override
-    public String toString() {
+        public String toString() {
         return "Tipo Imovel: "+ tipoImovel + ", Valor Imovel: " + valorImovel + ", Prazo: " + prazoFinanciamento + ", Taxa: " + taxaJurosAnual;
     }
 
@@ -65,7 +66,7 @@ public abstract class Financiamento {
     
    
     public void mostrarInformacoes() {
-        System.out.println(String.format("Valor da parcela: %.2f", calcularPgtoMensal()));
+    	System.out.println(String.format("Valor da parcela: %.2f", calcularPgtoMensal()));
         System.out.println(String.format("Total do financiamento: %.2f", calcularTotalFinanciamento(), "%n"));
     }
 }
