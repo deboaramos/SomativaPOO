@@ -38,8 +38,17 @@ public class Casa extends Financiamento {
 		return areaConstruida;
 	}
 
+	public void setAreaConstruida(double areaConstruida) {
+		this.areaConstruida = areaConstruida;
+	}
+
+	
 	public double getTamanhoTerreno() {
 		return tamanhoTerreno;
+	}
+	
+	public void setTamanhoTerreno(double tamanhoTerreno) {
+		this.tamanhoTerreno = tamanhoTerreno;
 	}
 
 

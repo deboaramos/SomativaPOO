@@ -114,6 +114,26 @@ public class Main {
   
 	//Recuperando dados do arquivo
 	ArrayList <Financiamento> financiamentosLidos = ManipulacaoArquivos.recuperarArquivo("financiamentos.txt");
+	System.out.printf ("Financiamentos salvos no arquivo.txt:%n");
+	for (Financiamento financiamento : financiamentosLidos) {
+		if (financiamento instanceof Casa) {
+			Casa casa = (Casa) financiamento; 
+			System.out.printf (financiamento.getTipoImovel() + "-" + financiamento.getValorImovel() + 
+				"-" + financiamento.getPrazoFinanciamento() + "-" + financiamento.getTaxaJurosAnual() + "-" + casa.getAreaConstruida() 
+				+ "-" + casa.getTamanhoTerreno() +"%n");
+			
+	}		else if (financiamento instanceof Apartamento){
+			Apartamento apartamento = (Apartamento) financiamento;
+			System.out.printf (financiamento.getTipoImovel() + "-" + financiamento.getValorImovel() + 
+					"-" + financiamento.getPrazoFinanciamento() + "-" + financiamento.getTaxaJurosAnual() + "-" + apartamento.getVagasGaragem() 
+					+ "-" + apartamento.getAndar() + "%n");
+			
+	} 		else if (financiamento instanceof Terreno) {
+			Terreno terreno = (Terreno) financiamento;
+			System.out.printf (financiamento.getTipoImovel() + "-" + financiamento.getValorImovel() + 
+					"-" + financiamento.getPrazoFinanciamento() + "-" + financiamento.getTaxaJurosAnual() + "-" + terreno.getZona() + "%n");			
+			}
+	}
 	
 	   
 	//Salvando financiamentos em arquivo serializado	
